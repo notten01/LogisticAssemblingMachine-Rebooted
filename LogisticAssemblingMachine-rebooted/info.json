@@ -1,6 +1,6 @@
 {
   "name": "LogisticAssemblingMachine-rebooted",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "title": "Logistic Assembling Machine rebooted",
   "author": "Wartank",
   "description": "A new tier of Assembling Machine and Chemical Plant that works like a requester/provider chest and a Medium Electric Pole.",

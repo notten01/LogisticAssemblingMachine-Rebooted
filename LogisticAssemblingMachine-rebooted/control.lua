@@ -150,11 +150,3 @@ script.on_event(defines.events.on_tick, function(event)
     end
 end
 )
-
--- if Brave new world scenario then drop 4 machines on the floor for an easy start
-script.on_event(defines.events.on_game_created_from_scenario, function(event)
-    local bnw_enabled = game.active_mods["brave-new-world"] and true or false
-    if (bnw_enabled) then
-        game.surfaces["nauvis"].spill_item_stack({0, -10}, {name = "logistic-assembling-machine", count = 4}, true)
-    end
-end)
