@@ -85,8 +85,8 @@ local function on_placement( entity )
    ins24.destructible = false
    ins24.minable = false
    
-   newLam = newLam(entity, ins21, ins20, ins22, ins23, ins24)
-   global.ControlMap[entity.unit_number] = newLam
+   build = newLam(entity, ins21, ins20, ins22, ins23, ins24)
+   global.ControlMap[entity.unit_number] = build
    
    return true
 end
