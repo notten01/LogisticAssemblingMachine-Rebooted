@@ -1,6 +1,13 @@
 global.ControlMap = global.ControlMap or {}
 
-rotation = 0
+local rotation = 0
+
+function isLogisticsMachine(name)
+    if (name == "logistic-assembling-machine" or name == "logistic-chemical-plant" or (game.active_mods["BraveNewWorkshop"] and name == "workshop")) then
+        return true
+    end
+    return false
+end
 
 -- custom functions
 function newLam (entity, input, output, inserterA, inserterB, power)
@@ -92,32 +99,33 @@ local function on_placement( entity )
 end
 
 script.on_event(defines.events.on_built_entity, function(event)
-      if (event.created_entity.name == "logistic-assembling-machine" or event.created_entity.name == "logistic-chemical-plant") then
-      on_placement( event.created_entity ) end	  
+    if (isLogisticsMachine(event.created_entity.name)) then
+      on_placement( event.created_entity ) 
+    end	  
 end)
 
 script.on_event(defines.events.on_robot_built_entity, function(event)
-     if (event.created_entity.name == "logistic-assembling-machine" or event.created_entity.name == "logistic-chemical-plant") then
-      on_placement( event.created_entity ) end	  
-	    
+    if (isLogisticsMachine(event.created_entity.name)) then
+      on_placement( event.created_entity ) 
+    end	  
 end)
 
 script.on_event(defines.events.script_raised_revive, function(event)
   local entity = event.entity or event.created_entity
-  if (entity.name == "logistic-assembling-machine" or entity.name == "logistic-chemical-plant") then
+  if (isLogisticsMachine(entity.name)) then
     on_placement(entity)
   end
 end)
 
 script.on_event(defines.events.script_raised_built, function(event)
   local entity = event.entity or event.created_entity
-  if (entity.name == "logistic-assembling-machine" or entity.name == "logistic-chemical-plant") then
+  if (isLogisticsMachine(entity.name)) then
     on_placement(entity)
   end
 end)
 
 script.on_event(defines.events.on_player_mined_entity, function(event)
-    if (event.entity.name == "logistic-assembling-machine" or event.entity.name == "logistic-chemical-plant") then
+    if (isLogisticsMachine(event.entity.name)) then
         removeLam(global.ControlMap[event.entity.unit_number])
         global.ControlMap[event.entity.unit_number] = nil 
 	end	
@@ -125,7 +133,7 @@ end
 )
 
 script.on_event(defines.events.on_robot_mined_entity, function(event)
-    if (event.entity.name == "logistic-assembling-machine" or event.entity.name == "logistic-chemical-plant") then
+    if (isLogisticsMachine(event.entity.name)) then
         removeLam(global.ControlMap[event.entity.unit_number])
         global.ControlMap[event.entity.unit_number] = nil
     end	
@@ -133,7 +141,7 @@ end
 )
   
 script.on_event(defines.events.on_entity_died, function(event)
-    if (event.entity.name == "logistic-assembling-machine" or event.entity.name == "logistic-chemical-plant") then
+    if (isLogisticsMachine(event.entity.name)) then
         removeLam(global.ControlMap[event.entity.unit_number])
         global.ControlMap[event.entity.unit_number] = nil 
     end	

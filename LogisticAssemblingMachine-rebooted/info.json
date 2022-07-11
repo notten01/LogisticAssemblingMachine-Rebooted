@@ -1,10 +1,11 @@
 {
   "name": "LogisticAssemblingMachine-rebooted",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "title": "Logistic Assembling Machine rebooted",
   "author": "Wartank",
   "description": "A new tier of Assembling Machine and Chemical Plant that works like a requester/provider chest and a Medium Electric Pole.",
-  "factorio_version": "1.1"
+  "factorio_version": "1.1",
+  "dependencies": ["? BraveNewWorkshop > 1.0.0"]
 }
 
 

@@ -455,6 +455,10 @@ logchemi.icon = "__LogisticAssemblingMachine-rebooted__/graphics/logistic-chemic
 logchemi.place_result = "logistic-chemical-plant";
 data:extend({logchemi})
 
+if (data.raw["assembling-machine"]["workshop"]) then
+    data.raw["assembling-machine"]["workshop"].selection_box = {{-1.5, 0	}, {1.5, 1.5}}
+end
+
 
 
 
